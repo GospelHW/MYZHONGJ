@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.lg.logindemo.model.User;
 import com.lg.logindemo.serviecs.UserService;
 
 public class RegisterAcitvity extends AppCompatActivity {
@@ -23,15 +24,20 @@ public class RegisterAcitvity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 UserService userServices = new UserService(context);
-                boolean isTure = userServices.login(username.getText().toString(), lgpwd.getText().toString());
-
+                User user = new User();
+                user.setuName("Gospel");
+                user.setuAge("30");
+                user.setuPhone("15210769058");
+                user.setuPwd("111111");
+                user.setuSex("0");//0女1男
+                user.setuAddress("北京市朝阳区金兴路一号院");
+                boolean isTure = userServices.register(user);
                 if (isTure) {
-                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterAcitvity.this, "Register Successful", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterAcitvity.this, "Register Failed", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(RegisterAcitvity.this, "Create Success ", Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(RegisterAcitvity.this, "Create Success ", Toast.LENGTH_SHORT).show();
             }
         });
     }
