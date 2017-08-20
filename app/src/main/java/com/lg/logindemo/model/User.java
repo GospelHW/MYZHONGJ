@@ -5,6 +5,7 @@ package com.lg.logindemo.model;
  */
 
 public class User {
+    private int id;
     private String uName;
     private String uPwd;
     private String uRePwd;
@@ -12,6 +13,14 @@ public class User {
     private String uSex;
     private String uPhone;
     private String uAddress;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getuName() {
         return uName;

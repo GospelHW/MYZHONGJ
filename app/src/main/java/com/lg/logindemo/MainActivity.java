@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.lg.logindemo.dbhelp.SqliteDB;
 import com.lg.logindemo.serviecs.UserService;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,10 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 if (username != null && username.length() > 0) {
                     if (lgpwd != null && lgpwd.length() >= 6 && lgpwd.length() <= 20) {
                         UserService userServices = new UserService(context);
-                        boolean isTure = userServices.login(username.getText().toString(), lgpwd.getText().toString());
-
-                        if (isTure) {
+//                        boolean isTure = userServices.login(username.getText().toString(), lgpwd.getText().toString());
+                        int isTure = SqliteDB.getInstance(getApplicationContext()).Quer(lgpwd.getText().toString(), username.getText().toString());
+                        if (isTure == 1) {
                             Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(context, PersonAcitvity.class));
+                        } else if (isTure == 0) {
+                            Toast.makeText(MainActivity.this, "This User is no Register!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
                         }

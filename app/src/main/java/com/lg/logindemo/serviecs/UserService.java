@@ -32,7 +32,8 @@ public class UserService {
 
     //注册用
     public boolean register(User user) {
-        SQLiteDatabase sdb = dbHelper.getReadableDatabase();
+        SQLiteDatabase sdb= dbHelper.getWritableDatabase();
+//        SQLiteDatabase sdb = dbHelper.getReadableDatabase();
         String sql = "insert into user(username,password,age,sex,phone,address) values(?,?,?,?,?,?)";
         Object obj[] = {user.getuName(), user.getuPwd(), user.getuAge(), user.getuSex()};
         sdb.execSQL(sql, obj);
