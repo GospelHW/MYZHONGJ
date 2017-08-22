@@ -19,6 +19,16 @@ android {
     }
 }
 
+//sourceSets {
+//    main {
+//        res.srcDirs = [
+//                'src/main/res/layout/task-download',
+//                'src/main/res/layout',
+//                'src/main/res'
+//        ]
+//    }
+//}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'

@@ -28,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Login");
         button = (Button) findViewById(R.id.login);
         username = (EditText) findViewById(R.id.username);
+        username.setText("Gospel");
         lgpwd = (EditText) findViewById(R.id.lgpwd);
+        lgpwd.setText("111111");
         context = this;
         /**
          * 登录按钮的点击事件
@@ -43,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
                         int isTure = SqliteDB.getInstance(getApplicationContext()).Quer(lgpwd.getText().toString(), username.getText().toString());
                         if (isTure == 1) {
                             Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(context, PersonAcitvity.class));
+                            /*登录成功，进入任务下载页面*/
+                            startActivity(new Intent(context, TaskDownloadActivity.class));
                         } else if (isTure == 0) {
                             Toast.makeText(MainActivity.this, "This User is no Register!", Toast.LENGTH_SHORT).show();
                         } else {
